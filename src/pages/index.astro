@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const navSections = [
+  {
+    title: '🏠 站内功能',
+    items: [
+      { name: '📚 百科舱', href: '/baike', internal: true },
+      { name: '📊 数据实验室', href: '/data', internal: true },
+      { name: '💡 灵感共享', href: '/share', internal: true },
+    ],
+  },
+  {
+    title: '☁️ 云与算力',
+    items: [
+      { name: 'AWS', href: 'https://aws.amazon.com/' },
+      { name: '火山引擎', href: 'https://www.volcengine.com/' },
+      { name: 'Deepnote', href: 'https://deepnote.com/' },
+      { name: 'Google Colab', href: 'https://colab.research.google.com/' },
+      { name: 'Kaggle', href: 'https://www.kaggle.com/' },
+    ],
+  },
+  {
+    title: '🧠 AI研究',
+    items: [
+      { name: 'Papers with Code', href: 'https://paperswithcode.com/' },
+      { name: 'arXiv', href: 'https://arxiv.org/' },
+      { name: 'Hugging Face', href: 'https://huggingface.co/' },
+      { name: 'Shodan', href: 'https://www.shodan.io/' },
+      { name: 'CPU Benchmark', href: 'https://www.cpubenchmark.net/' },
+    ],
+  },
+  {
+    title: '🤖 生成式AI',
+    items: [
+      { name: 'ChatGPT', href: 'https://chatgpt.com/' },
+      { name: 'Kimi', href: 'https://kimi.moonshot.cn/' },
+      { name: '豆包', href: 'https://www.doubao.com/' },
+      { name: 'Gemini', href: 'https://gemini.google.com/' },
+      { name: 'Claude', href: 'https://claude.ai/' },
+      { name: 'Midjourney', href: 'https://www.midjourney.com/' },
+    ],
+  },
+  {
+    title: '📊 数据源',
+    items: [
+      { name: '国家统计局', href: 'https://data.stats.gov.cn/' },
+      { name: '工信部', href: 'https://www.miit.gov.cn/' },
+      { name: 'AKShare', href: 'https://github.com/akfamily/akshare' },
+      { name: 'Tushare', href: 'https://tushare.pro/' },
+      { name: 'Wind', href: 'https://www.wind.com.cn/' },
+    ],
+  },
+  {
+    title: '🔓 开源工具',
+    items: [
+      { name: 'Free for Dev', href: 'https://free-for.dev/' },
+      { name: 'Next.js', href: 'https://nextjs.org/' },
+      { name: 'GitHub', href: 'https://github.com/' },
+      { name: 'Vercel', href: 'https://vercel.com/' },
+      { name: 'Docker', href: 'https://www.docker.com/' },
+    ],
+  },
+  {
+    title: '📚 知识资料',
+    items: [
+      { name: '学霸盘', href: 'https://www.xuebapan.com/' },
+      { name: '秒搜', href: 'https://miaosou.fun/' },
+      { name: 'YouTube', href: 'https://www.youtube.com/' },
+      { name: '哔哩哔哩', href: 'https://www.bilibili.com/' },
+      { name: '知乎', href: 'https://www.zhihu.com/' },
+    ],
+  },
+]
+---
+
+<Layout title="数字科学网 · 算力数据灵感聚合平台" currentPage="home">
+  <div class="max-w-6xl mx-auto w-full px-4 py-6 md:py-8">
+    {navSections.map((section) => (
+      <section class="mb-6 bg-gray-50 rounded-xl p-4 md:p-6 border border-gray-100">
+        <h2 class="text-base md:text-lg font-semibold text-gray-800 mb-4 pb-3 border-b border-gray-200">
+          {section.title}
+        </h2>
+        <div class="flex flex-wrap gap-2 md:gap-3">
+          {section.items.map((item) => (
+            <a
+              href={item.href}
+              target={item.internal ? undefined : '_blank'}
+              rel={item.internal ? undefined : 'noopener noreferrer'}
+              class="px-3 py-2 md:px-4 md:py-2 bg-white border border-gray-200 rounded-full text-sm md:text-base text-gray-700 hover:border-orange-400 hover:text-orange-600 transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>

@@ -1,0 +1,105 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description?: string
+  currentPage?: 'home' | 'baike' | 'data' | 'share'
+}
+
+const { title, description = '数字科学网将算力、知识、数据与灵感集中呈现，帮助研究者和产品团队快速启程。', currentPage = 'home' } = Astro.props
+
+const navItems = [
+  { key: 'home', label: '首页', href: '/' },
+  { key: 'baike', label: '百科', href: '/baike' },
+  { key: 'data', label: '数据', href: '/data' },
+  { key: 'share', label: '分享', href: '/share' },
+]
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="数字科学,算力,数据,AI,云计算,导航,知识库" />
+    <link rel="icon" type="image/png" href="/logo-circle.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+          <img src="/logo-web.png" alt="数字科学网" class="h-7 md:h-8 w-auto" />
+        </a>
+        
+        <!-- 桌面导航 -->
+        <nav class="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                currentPage === item.key
+                  ? 'bg-orange-500 text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <!-- 移动端菜单按钮 -->
+        <button id="menu-toggle" class="md:hidden p-2 text-gray-600" aria-label="菜单">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- 移动端菜单 -->
+      <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-3">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`block px-4 py-3 rounded-lg text-sm font-medium mb-1 ${
+              currentPage === item.key
+                ? 'bg-orange-500 text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-50 border-t border-gray-100 py-6 mt-auto">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">
+          Copyright © 2025 数字科学网 · Digital Science Hub
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('menu-toggle')
+      const menu = document.getElementById('mobile-menu')
+      toggle?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden')
+      })
+    </script>
+  </body>
+</html>

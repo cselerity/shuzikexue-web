@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ComingSoon from '../components/ComingSoon.astro'
+
+const baikeData = {
+  badge: 'COMING SOON',
+  icon: '📚',
+  title: '数字科学百科舱',
+  intro: '我们正在构建一部<strong class="text-orange-500">可计算的数字科学百科</strong>——不是静态的文字堆砌，而是活的知识网络。每个词条不仅有清晰的概念定义与知识脉络，还配备<strong class="text-orange-500">代码片段</strong>、<strong class="text-orange-500">数据接口</strong>与<strong class="text-orange-500">可复现实验模板</strong>，让学习即实践，让知识即能力。',
+  stats: [
+    { number: '1000+', label: '计划词条数' },
+    { number: '12', label: '知识领域' },
+    { number: '∞', label: '持续更新' },
+  ],
+  features: [
+    { icon: '🔗', title: '知识图谱', description: '每个概念都有清晰的上下文关联，形成完整知识网络' },
+    { icon: '💻', title: '代码实践', description: '内置可运行代码片段，理论与实践无缝衔接' },
+    { icon: '📊', title: '数据驱动', description: '关联真实数据集，用数据验证理论' },
+    { icon: '🧪', title: '实验模板', description: '提供可复现的实验环境，动手即学会' },
+  ],
+}
+---
+
+<Layout 
+  title="数字科学百科舱 · 数字科学网" 
+  description="构建一部可计算的数字科学百科，不是静态的文字堆砌，而是活的知识网络。"
+  currentPage="baike"
+>
+  <ComingSoon {...baikeData} />
+</Layout>

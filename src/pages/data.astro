@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ComingSoon from '../components/ComingSoon.astro'
+
+const dataLabData = {
+  badge: 'COMING SOON',
+  icon: '📈',
+  title: '数据实验室',
+  intro: '数据不是冰冷的表格，而是驱动洞察的活水。<strong class="text-orange-500">数据实验室</strong>将官方统计、产业指标与企业数据汇聚于一个智能面板，通过<strong class="text-orange-500">可视化引擎</strong>、<strong class="text-orange-500">分析模板</strong>与<strong class="text-orange-500">开放API</strong>，让数据从沉睡的资产变成决策的利器。',
+  stats: [
+    { number: '100+', label: '数据源接入' },
+    { number: '50+', label: '分析模板' },
+    { number: '实时', label: '数据同步' },
+  ],
+  features: [
+    { icon: '🏛️', title: '官方数据直连', description: '对接国家统计局、央行、工信部等权威数据源，确保数据可信' },
+    { icon: '📊', title: '智能可视化', description: '一键生成专业图表，支持交互式探索与自定义仪表盘' },
+    { icon: '🔌', title: '开放API', description: 'RESTful接口与Python/R SDK，轻松集成到你的工作流' },
+    { icon: '🧮', title: '分析模板库', description: '预置行业分析、趋势预测、对比研究等常用分析模板' },
+  ],
+}
+---
+
+<Layout 
+  title="数据实验室 · 数字科学网" 
+  description="让数据从沉睡的资产变成决策的利器"
+  currentPage="data"
+>
+  <ComingSoon {...dataLabData} />
+</Layout>

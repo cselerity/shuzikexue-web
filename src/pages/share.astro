@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ComingSoon from '../components/ComingSoon.astro'
+
+const shareData = {
+  badge: 'COMING SOON',
+  icon: '✨',
+  title: '灵感共享空间',
+  intro: '用优质内容刷新灵感值，让创意在视听盛宴中自然生长。<strong class="text-orange-500">灵感共享</strong>精选全网优质视频、文章与播客，通过<strong class="text-orange-500">智能推荐</strong>与<strong class="text-orange-500">主题策展</strong>，为你打造专属的灵感补给站，激发无限创造力。',
+  stats: [
+    { number: '500+', label: '精选内容' },
+    { number: '20+', label: '主题频道' },
+    { number: '日更', label: '内容更新' },
+  ],
+  features: [
+    { icon: '🎬', title: '视频精选', description: '汇集YouTube、B站等平台的优质科技、设计、商业内容' },
+    { icon: '📝', title: '深度文章', description: '精选Medium、知乎等平台的深度思考与行业洞察' },
+    { icon: '🎧', title: '播客推荐', description: '发现优质播客节目，在碎片时间获取系统知识' },
+    { icon: '🎯', title: '主题策展', description: '围绕热点话题与前沿技术，策划专题内容合集' },
+  ],
+}
+---
+
+<Layout 
+  title="灵感共享 · 数字科学网" 
+  description="用优质内容刷新灵感值，让创意在视听盛宴中自然生长"
+  currentPage="share"
+>
+  <ComingSoon {...shareData} />
+</Layout>
